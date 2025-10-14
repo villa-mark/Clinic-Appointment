@@ -113,10 +113,10 @@ _As a patient, I want to view my appointment list and their statuses (Pending, A
 ---
 
 ## 🧠 Tech Stack  
-- **Frontend:** HTML, CSS (Bootstrap)  
-- **Backend:** PHP (Procedural or OOP)  
+- **Frontend:** HTML, CSS
+- **Backend:** PHP (OOP)  
 - **Database:** MySQL  
-- **Web Server:** Apache (XAMPP/WAMP/Laragon)  
+- **Web Server:** Apache
 
 ---
 
