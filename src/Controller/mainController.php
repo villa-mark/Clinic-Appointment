@@ -14,8 +14,12 @@ class MainController {
                 require __DIR__ . '/../View/login.php';
                 break;
 
-            case 'register':
-                require __DIR__ . '/../View/register.php';
+            case 'register-patient':
+                require __DIR__ . '/../View/registerPatient.php';
+                break;
+
+            case 'register-clinic':
+                require __DIR__ . '/../View/registerClinic.php';
                 break;
             
             case 'choose':

@@ -87,10 +87,10 @@
         <h2>Create an Account</h2>
         <p>Select how you want to register:</p>
 
-        <a href="registerClinic.php" class="btn-option">Register a Clinic</a>
-        <a href="registerPatient.php" class="btn-option">Register as Patient</a>
+        <a href="/index.php/register-clinic" class="btn-option">Register a Clinic</a>
+        <a href="/index.php/register-patient" class="btn-option">Register as Patient</a>
 
-        <a href="/index.php/" class="back-home">← Back to Home</a>
+        <a href="/index.php/" class="back-home">Back to Home</a>
     </div>
 
 </body>
