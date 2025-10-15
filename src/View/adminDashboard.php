@@ -262,7 +262,7 @@ $clinicName = "ClinicA"; // Replace with session data
                     </ul>
                 </nav>
             </div>
-            <a href="/index.php/logout" class="logout-btn">Logout</a>
+            <a href="/index.php/" class="logout-btn">Logout</a>
         </aside>
 
         <!-- Main Content -->

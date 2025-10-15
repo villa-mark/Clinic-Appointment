@@ -14,39 +14,46 @@ $doctorName = "Dr. Maria Santos"; // Replace with session data
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Dashboard | Clinic Appointment</title>
     <style>
-        body {
+        /* Reset */
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: "Poppins", sans-serif;
-            background-color: #f7f9fa;
         }
 
+        body {
+            background: #eef5f9;
+            color: #333;
+        }
+
+        /* Layout */
         .dashboard {
             display: grid;
-            grid-template-columns: 250px 1fr;
+            grid-template-columns: 260px 1fr;
             min-height: 100vh;
-            background-color: #f7f9fa;
         }
 
         /* Sidebar */
         .sidebar {
-            background-color: #2b7a78;
+            background: linear-gradient(180deg, #2b7a78, #3aafa9);
             color: white;
-            padding: 30px 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            padding: 30px 20px;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.1);
         }
 
         .sidebar h2 {
             text-align: center;
+            font-size: 1.7rem;
             margin-bottom: 40px;
-            font-size: 1.6rem;
+            font-weight: 600;
         }
 
         .sidebar nav ul {
             list-style: none;
-            padding: 0;
-            margin: 0;
         }
 
         .sidebar nav ul li {
@@ -54,18 +61,35 @@ $doctorName = "Dr. Maria Santos"; // Replace with session data
         }
 
         .sidebar nav ul li a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             color: white;
             text-decoration: none;
             font-weight: 500;
-            display: block;
-            padding: 10px 15px;
+            padding: 12px 15px;
             border-radius: 8px;
-            transition: background 0.3s;
+            transition: 0.3s;
         }
 
         .sidebar nav ul li a:hover,
         .sidebar nav ul li a.active {
-            background-color: #3aafa9;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .logout-btn {
+            background: #fff;
+            color: #2b7a78;
+            font-weight: 600;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #def2f1;
         }
 
         /* Main Content */
@@ -90,7 +114,7 @@ $doctorName = "Dr. Maria Santos"; // Replace with session data
             color: #555;
         }
 
-        /* Cards */
+        /* Summary Cards */
         .cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -102,8 +126,8 @@ $doctorName = "Dr. Maria Santos"; // Replace with session data
             background: #fff;
             border-radius: 12px;
             padding: 25px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease-in-out;
         }
 
         .card:hover {
@@ -122,18 +146,18 @@ $doctorName = "Dr. Maria Santos"; // Replace with session data
             color: #17252a;
         }
 
-        /* Appointments Table */
+        /* Appointment Table */
         .appointments {
             background: #fff;
-            border-radius: 12px;
-            padding: 25px 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         .appointments h2 {
             color: #2b7a78;
-            font-size: 1.4rem;
             margin-bottom: 20px;
+            font-size: 1.4rem;
         }
 
         table {
@@ -142,14 +166,14 @@ $doctorName = "Dr. Maria Santos"; // Replace with session data
         }
 
         th, td {
+            padding: 14px 16px;
             text-align: left;
-            padding: 12px 15px;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #eee;
         }
 
-        th {
-            color: #2b7a78;
-            font-weight: 600;
+        thead {
+            background: #2b7a78;
+            color: white;
         }
 
         .status {
@@ -174,20 +198,12 @@ $doctorName = "Dr. Maria Santos"; // Replace with session data
             color: #721c24;
         }
 
-        /* Logout Button */
-        .btn-outline {
-            display: block;
-            border: 2px solid #def2f1;
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            border-radius: 8px;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .btn-outline:hover {
-            background-color: #3aafa9;
-            color: white;
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
         }
 
         /* Responsive */
@@ -198,17 +214,16 @@ $doctorName = "Dr. Maria Santos"; // Replace with session data
 
             .sidebar {
                 flex-direction: row;
-                align-items: center;
                 justify-content: space-around;
                 padding: 15px;
             }
 
-            .main-content {
-                padding: 20px;
-            }
-
             .sidebar h2 {
                 display: none;
+            }
+
+            .main-content {
+                padding: 20px;
             }
         }
     </style>
@@ -229,9 +244,7 @@ $doctorName = "Dr. Maria Santos"; // Replace with session data
                     </ul>
                 </nav>
             </div>
-            <div>
-                <a href="/index.php/logout" class="btn-outline" style="width:100%; text-align:center;">Logout</a>
-            </div>
+            <a href="/index.php/" class="logout-btn">Logout</a>
         </aside>
 
         <!-- Main Content -->
@@ -239,11 +252,11 @@ $doctorName = "Dr. Maria Santos"; // Replace with session data
             <div class="main-header">
                 <div>
                     <h1>Welcome, <?php echo htmlspecialchars($doctorName); ?>!</h1>
-                    <p>Here’s your schedule and patient overview for today.</p>
+                    <p>Here’s your overview and today’s appointments.</p>
                 </div>
             </div>
 
-            <!-- Dashboard Cards -->
+            <!-- Summary Cards -->
             <section class="cards">
                 <div class="card">
                     <h3>Today's Appointments</h3>
@@ -263,7 +276,7 @@ $doctorName = "Dr. Maria Santos"; // Replace with session data
                 </div>
             </section>
 
-            <!-- Appointments Table -->
+            <!-- Appointment Table -->
             <section class="appointments">
                 <h2>Today's Appointments</h2>
                 <table>
@@ -303,6 +316,10 @@ $doctorName = "Dr. Maria Santos"; // Replace with session data
                     </tbody>
                 </table>
             </section>
+
+            <footer>
+                © 2025 Clinic Appointment System — Designed by Mark Anthony Villahermosa
+            </footer>
         </main>
     </div>
 </body>
