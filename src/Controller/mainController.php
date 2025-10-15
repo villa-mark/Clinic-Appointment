@@ -7,7 +7,6 @@ class MainController {
 
         switch ($route) {
             case '':
-            case 'index.php':
                 require __DIR__ . '/../View/landingPage.php';
                 break;
 
@@ -21,6 +20,18 @@ class MainController {
             
             case 'choose':
                 require __DIR__ . '/../View/chooseRegister.php';
+                break;
+
+            case 'patient':
+                require __DIR__ . '/../View/patientDashboard.php';
+                break;
+
+            case 'admin':
+                require __DIR__ . '/../View/adminDashboard.php';
+                break;
+
+            case 'doctor':
+                require __DIR__ . '/../View/doctorDashboard.php';
                 break;
 
             default:

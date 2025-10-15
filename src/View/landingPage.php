@@ -67,16 +67,24 @@
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <div class="container">
-            <h3>Contact Us</h3>
-            <p>Need help? We’d love to hear from you.</p>
-            <div class="contact-details">
-                <p><strong>📍 Address:</strong> Cebu City, Philippines</p>
-                <p><strong>📞 Phone:</strong> +63 000 000 0000</p>
-                <p><strong>📧 Email:</strong> support@clinicappt.com</p>
-            </div>
+    <div class="container">
+        <h3>Contact Us</h3>
+
+        <div class="contact-grid">
+        <div class="contact-box">
+            <p><strong>📍 Address:</strong><br>Cebu City, Philippines</p>
         </div>
+        <div class="contact-box">
+            <p><strong>📞 Phone:</strong><br>+63 000 000 0000</p>
+        </div>
+        <div class="contact-box wide">
+            <p><strong>📧 Email:</strong><br>support@clinicappt.com</p>
+        </div>
+        </div>
+    </div>
     </section>
+
+
 
     <!-- Footer -->
     <footer>

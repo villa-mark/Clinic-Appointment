@@ -58,14 +58,14 @@
                     </select>
                 </div>
 
-                <button type="submit" class="btn full">Login</button>
+                <button type="submit" class="btn full" id="login-button" >Login</button>
             </form>
 
             <p class="register-text">
                 Don’t have an account? <a href="/index.php/choose">Create one</a>
             </p>
 
-            <a href="index.php" class="back-home">
+            <a href="/index.php/" class="back-home">
                 <span class="back-arrow">←</span> Back to Home
             </a>
         </div>
