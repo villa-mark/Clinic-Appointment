@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/Controller/mainController.php';
+require_once __DIR__ . '/Controller/Route.php';
 
-$controller = new MainController();
+$controller = new Route();
 ?>

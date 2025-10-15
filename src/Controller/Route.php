@@ -1,6 +1,6 @@
 <?php
 
-class MainController {
+class Route {
     public function __construct() {
         $urlArr = $this->sliceURL();
         $route = isset($urlArr[1]) ? strtolower($urlArr[1]) : ''; // use [1] since [0] is usually "src" if inside subfolder
@@ -11,31 +11,31 @@ class MainController {
                 break;
 
             case 'login':
-                require __DIR__ . '/../View/login.php';
+                require __DIR__ . '/../View/Login/login.php';
                 break;
 
             case 'register-patient':
-                require __DIR__ . '/../View/registerPatient.php';
+                require __DIR__ . '/../View/Register/registerPatient.php';
                 break;
 
             case 'register-clinic':
-                require __DIR__ . '/../View/registerClinic.php';
+                require __DIR__ . '/../View/Register/registerClinic.php';
                 break;
             
             case 'choose':
-                require __DIR__ . '/../View/chooseRegister.php';
+                require __DIR__ . '/../View/Register/chooseRegister.php';
                 break;
 
             case 'patient':
-                require __DIR__ . '/../View/patientDashboard.php';
+                require __DIR__ . '/../View/Patient/patientDashboard.php';
                 break;
 
             case 'admin':
-                require __DIR__ . '/../View/adminDashboard.php';
+                require __DIR__ . '/../View/Admin/adminDashboard.php';
                 break;
 
             case 'doctor':
-                require __DIR__ . '/../View/doctorDashboard.php';
+                require __DIR__ . '/../View/Doctor/doctorDashboard.php';
                 break;
 
             default:

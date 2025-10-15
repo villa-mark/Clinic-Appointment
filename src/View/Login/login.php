@@ -162,7 +162,7 @@
         <h2>Welcome Back</h2>
         <p class="subtitle">Log in to manage your appointments</p>
 
-        <form action="/authenticate.php" method="POST">
+        <form action="/Controller/Auth/authenticate.php" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
