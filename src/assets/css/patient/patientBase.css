@@ -1,0 +1,173 @@
+/* === Global Reset === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body {
+    background: #eef5f9;
+    color: #333;
+}
+
+/* === Layout === */
+.dashboard {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+}
+
+/* === Sidebar === */
+.sidebar {
+    background: linear-gradient(180deg, #2b7a78, #3aafa9);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 20px;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+}
+.sidebar h2 {
+    text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.sidebar nav ul li a:hover,
+.sidebar nav ul li a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.logout-btn {
+    background: #fff;
+    color: #2b7a78;
+    font-weight: 600;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.logout-btn:hover {
+    background: #def2f1;
+}
+
+/* === Main Content === */
+.main-content {
+    padding: 40px;
+}
+.main-header h1 {
+    color: #2b7a78;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+.main-header p {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* === Search Bar === */
+.search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+.search-bar input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+.search-bar input:focus {
+    outline: none;
+    border-color: #3aafa9;
+    box-shadow: 0 0 4px rgba(58,175,169,0.3);
+}
+.search-bar button {
+    background: #2b7a78;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+.search-bar button:hover {
+    background: #205e5c;
+}
+
+/* === Doctor Cards === */
+.doctor-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+    transition: transform 0.2s ease;
+}
+.doctor-card:hover {
+    transform: translateY(-3px);
+}
+.doctor-card h3 {
+    color: #2b7a78;
+    margin-bottom: 8px;
+}
+.doctor-card p {
+    color: #555;
+    margin: 6px 0;
+}
+.btn-request {
+    display: inline-block;
+    background: #3aafa9;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+.btn-request:hover {
+    background: #2b7a78;
+}
+
+/* === Footer === */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 15px;
+    }
+    .sidebar h2 {
+        display: none;
+    }
+    .main-content {
+        padding: 20px;
+    }
+}

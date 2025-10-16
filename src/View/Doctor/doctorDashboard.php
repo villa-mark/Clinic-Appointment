@@ -112,7 +112,7 @@ $appointments = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Dashboard | Clinic Appointment</title>
-    <link rel="stylesheet" href="/assets/css/doctor/doctorBase.css" />
+    <link rel="stylesheet" href="/assets/css/common/baseLayout.css" />
     <link rel="stylesheet" href="/assets/css/doctor/doctorDashboard.css" />
     <link rel="stylesheet" href="/assets/css/doctor/doctorAppointment.css" />
 </head>

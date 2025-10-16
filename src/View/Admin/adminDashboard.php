@@ -13,252 +13,165 @@ $clinicName = "ClinicA"; // Replace with session data
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clinic Admin Dashboard | Clinic Appointment</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/common/baseLayout.css">
     <style>
-        /* Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
+    /* Additional Dashboard Styles */
+
+    /* Stats Cards */
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .stats .card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .stats .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .stats .card h3 {
+        font-size: 2rem;
+        color: #2b7a78;
+        margin-bottom: 8px;
+    }
+
+    .stats .card p {
+        font-weight: 500;
+        color: #555;
+    }
+
+    /* Doctor Management Section */
+    .doctors {
+        margin-top: 20px;
+    }
+
+    .doctors h2 {
+        color: #2b7a78;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+    }
+
+    /* Table Styles */
+    .doctors table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .doctors thead tr {
+        background: #2b7a78;
+        color: #fff;
+        text-align: left;
+    }
+
+    .doctors thead th {
+        padding: 14px 16px;
+    }
+
+    .doctors tbody tr {
+        background: #fff;
+        transition: background 0.3s;
+    }
+
+    .doctors tbody tr:hover {
+        background: #f1f9f8;
+    }
+
+    .doctors tbody td {
+        padding: 14px 16px;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Action buttons for doctor table */
+    .action-btn {
+        background: #3aafa9;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: 0.3s;
+    }
+
+    .action-btn:hover {
+        background: #2b7a78;
+    }
+
+    /* Status badges */
+    .status.active {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .status.inactive {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    /* Responsive table */
+    @media (max-width: 768px) {
+        .doctors table, .doctors thead, .doctors tbody, .doctors th, .doctors td, .doctors tr {
+            display: block;
         }
 
-        body {
-            background: #eef5f9;
-            color: #333;
+        .doctors thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
         }
 
-        /* Dashboard Layout */
-        .dashboard {
-            display: grid;
-            grid-template-columns: 260px 1fr;
-            min-height: 100vh;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            background: linear-gradient(180deg, #2b7a78, #3aafa9);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 30px 20px;
-            box-shadow: 2px 0 8px rgba(0,0,0,0.1);
-        }
-
-        .sidebar h2 {
-            text-align: center;
-            font-size: 1.7rem;
-            margin-bottom: 40px;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .sidebar nav ul {
-            list-style: none;
-        }
-
-        .sidebar nav ul li {
-            margin-bottom: 18px;
-        }
-
-        .sidebar nav ul li a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 12px 15px;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
-
-        .sidebar nav ul li a:hover,
-        .sidebar nav ul li a.active {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .logout-btn {
-            background: #fff;
-            color: #2b7a78;
-            font-weight: 600;
-            text-align: center;
-            padding: 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .logout-btn:hover {
-            background: #def2f1;
-        }
-
-        /* Main Content */
-        .main-content {
-            padding: 40px;
-        }
-
-        .main-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .main-header h1 {
-            color: #2b7a78;
-            font-size: 1.8rem;
-        }
-
-        .main-header p {
-            font-size: 1rem;
-            color: #555;
-        }
-
-        /* Stats Cards */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-        }
-
-        .card h3 {
-            font-size: 2rem;
-            color: #2b7a78;
-            margin-bottom: 8px;
-        }
-
-        .card p {
-            font-weight: 500;
-            color: #666;
-        }
-
-        /* Doctor Management Section */
-        .doctors {
-            background: #fff;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .doctors h2 {
-            color: #2b7a78;
+        .doctors tr {
             margin-bottom: 20px;
-            font-size: 1.4rem;
+            border-bottom: 2px solid #eee;
         }
 
-        .doctor-list {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .doctor-list th, .doctor-list td {
+        .doctors td {
+            border: none;
+            padding: 10px;
+            position: relative;
+            padding-left: 50%;
             text-align: left;
-            padding: 14px 16px;
-            border-bottom: 1px solid #ddd;
         }
 
-        .doctor-list th {
-            background-color: #2b7a78;
-            color: white;
-        }
-
-        .status {
-            padding: 6px 12px;
-            border-radius: 6px;
+        .doctors td::before {
+            position: absolute;
+            top: 10px;
+            left: 16px;
+            width: 45%;
+            white-space: nowrap;
             font-weight: 600;
-            font-size: 0.9rem;
+            content: attr(data-label);
         }
+    }
+</style>
 
-        .status.active {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        .status.inactive {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-
-        .action-btn {
-            background: #3aafa9;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .action-btn:hover {
-            background: #2b7a78;
-        }
-
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #777;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .dashboard {
-                grid-template-columns: 1fr;
-            }
-
-            .sidebar {
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 15px;
-            }
-
-            .sidebar h2 {
-                display: none;
-            }
-
-            .main-content {
-                padding: 20px;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .doctors {
-                padding: 20px;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="dashboard">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div>
-                <h2><?php echo htmlspecialchars($clinicName); ?></h2>
+                <h2><?= htmlspecialchars($clinicName); ?></h2>
                 <nav>
                     <ul>
                         <li><a href="#" class="active">🏠 Dashboard</a></li>
-                        <li><a href="#">👨‍⚕️ Manage Doctors</a></li>
-                        <li><a href="#">🧑‍🤝‍🧑 View Patients</a></li>
-                        <li><a href="#">📅 Appointments</a></li>
-                        <li><a href="#">⚙️ Settings</a></li>
+                        <li><a href="/index.php/admin/manage">👨‍⚕️ Manage Doctors</a></li>
+                        <li><a href="/index.php/admin/patient">🧑‍🤝‍🧑 View Patients</a></li>
+                        <li><a href="/index.php/admin/appointment">📅 Appointments</a></li>
+                        <li><a href="/index.php/admin/setting">⚙️ Settings</a></li>
                     </ul>
                 </nav>
             </div>
@@ -295,9 +208,9 @@ $clinicName = "ClinicA"; // Replace with session data
             </div>
 
             <!-- Doctor Management Section -->
-            <section class="doctors">
+            <section class="doctors card">
                 <h2>Doctor Management</h2>
-                <table class="doctor-list">
+                <table>
                     <thead>
                         <tr>
                             <th>Name</th>

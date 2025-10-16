@@ -28,16 +28,69 @@ class Route {
                 break;
 
             case 'patient':
-                require __DIR__ . '/../View/Patient/patientDashboard.php';
+                $this->handlePatientRoutes($subRoute);
                 break;
 
             case 'admin':
-                require __DIR__ . '/../View/Admin/adminDashboard.php';
+                $this->handleAdminRoutes($subRoute);
                 break;
 
             case 'doctor':
                 // Handle doctor subroutes
                 $this->handleDoctorRoutes($subRoute);
+                break;
+
+            default:
+                $this->pageNotFound();
+                break;
+        }
+    }
+
+    private function handlePatientRoutes($subRoute) {
+        switch ($subRoute) {
+            case '':
+                require __DIR__ . '/../View/Patient/patientDashboard.php';
+                break;
+
+            case 'search':
+                require __DIR__ . '/../View/Patient/patientSearchDisease.php';
+                break;
+
+            case 'appointment':
+                require __DIR__ . '/../View/Patient/patientAppointment.php';
+                break;
+
+            case 'profile':
+                require __DIR__ . '/../View/Patient/patientProfile.php';
+                break;
+
+                
+            default:
+                $this->pageNotFound();
+                break;
+        }
+    }
+
+    private function handleAdminRoutes($subRoute) {
+        switch ($subRoute) {
+            case '':
+                require __DIR__ . '/../View/Admin/adminDashboard.php';
+                break;
+
+            case 'manage':
+                require __DIR__ . '/../View/Admin/adminManageDoctor.php';
+                break;
+
+            case 'patient':
+                require __DIR__ . '/../View/Admin/adminViewPatient.php';
+                break;
+
+            case 'appointment':
+                require __DIR__ . '/../View/Admin/adminAppointment.php';
+                break;
+
+            case 'setting':
+                require __DIR__ . '/../View/Admin/adminSetting.php';
                 break;
 
             default:

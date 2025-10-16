@@ -22,7 +22,7 @@ $doctorProfile = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Settings | Clinic Appointment</title>
 
-    <link rel="stylesheet" href="/assets/css/doctor/doctorBase.css" />
+    <link rel="stylesheet" href="/assets/css/common/baseLayout.css" />
     <link rel="stylesheet" href="/assets/css/doctor/doctorSetting.css" />
 </head>
 <body>

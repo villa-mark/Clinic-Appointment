@@ -32,6 +32,18 @@ $appointments = [
     ['patient' => 'Paul Lim', 'date' => '2025-10-16', 'time' => '9:15 AM', 'reason' => 'Dental Cleaning', 'status' => 'Pending'],
     ['patient' => 'Rose Dela Peña', 'date' => '2025-10-16', 'time' => '11:00 AM', 'reason' => 'Skin Allergy', 'status' => 'Completed'],
 ];
+
+// Get filter values
+$filterDate = $_POST['filter_date'] ?? '';
+$filterStatus = $_POST['filter_status'] ?? '';
+
+// Apply filtering
+$filteredAppointments = array_filter($appointments, function ($appt) use ($filterDate, $filterStatus) {
+    $matchesDate = !$filterDate || $appt['date'] === $filterDate;
+    $matchesStatus = !$filterStatus || strtolower($appt['status']) === strtolower($filterStatus);
+    return $matchesDate && $matchesStatus;
+});
+
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +52,7 @@ $appointments = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointments | Clinic Appointment</title>
-    <link rel="stylesheet" href="/assets/css/doctor/doctorBase.css" />
+    <link rel="stylesheet" href="/assets/css/common/baseLayout.css" />
     <link rel="stylesheet" href="/assets/css/doctor/doctorAppointment.css" />
 </head>
 <body>
@@ -67,16 +79,20 @@ $appointments = [
                 <p>Manage your appointments efficiently.</p>
             </div>
 
-            <div class="filter">
-                <input type="date" />
-                <select>
-                    <option value="">All Patients</option>
-                    <?php foreach ($appointments as $appt): ?>
-                        <option><?= htmlspecialchars($appt['patient']) ?></option>
-                    <?php endforeach; ?>
+            <form method="POST" class="filter">
+                <input type="date" name="filter_date" value="<?= htmlspecialchars($filterDate) ?>" />
+
+                <select name="filter_status">
+                    <option value="">All Status</option>
+                    <option value="Pending" <?= $filterStatus === 'Pending' ? 'selected' : '' ?>>Pending</option>
+                    <option value="Accepted" <?= $filterStatus === 'Accepted' ? 'selected' : '' ?>>Accepted</option>
+                    <option value="Completed" <?= $filterStatus === 'Completed' ? 'selected' : '' ?>>Completed</option>
+                    <option value="Cancelled" <?= $filterStatus === 'Cancelled' ? 'selected' : '' ?>>Cancelled</option>
                 </select>
-                <button>Filter</button>
-            </div>
+
+                <button type="submit">Filter</button>
+            </form>
+
 
             <section class="appointments">
                 <h2>Appointment List</h2>
@@ -93,7 +109,7 @@ $appointments = [
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($appointments as $appt): ?>
+                            <?php foreach ($filteredAppointments as $appt): ?>
                                 <tr>
                                     <td><?= htmlspecialchars($appt['patient']) ?></td>
                                     <td><?= htmlspecialchars($appt['date']) ?></td>
