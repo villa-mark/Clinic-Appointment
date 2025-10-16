@@ -1,0 +1,174 @@
+/* base.css */
+
+/* Reset & Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #eef5f9;
+    color: #333;
+}
+
+/* Layout */
+.dashboard {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    background: linear-gradient(180deg, #2b7a78, #3aafa9);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 20px;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+}
+
+.sidebar h2 {
+    text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.sidebar nav ul {
+    list-style: none;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 18px;
+}
+
+.sidebar nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.sidebar nav ul li a:hover,
+.sidebar nav ul li a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.logout-btn {
+    background: #fff;
+    color: #2b7a78;
+    font-weight: 600;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background: #def2f1;
+}
+
+/* Main Content */
+/* Make main content scrollable */
+.main-content {
+    padding: 40px;
+    overflow-y: auto;
+    height: 100vh; /* Ensures it takes full viewport height */
+    box-sizing: border-box;
+}
+
+/* Optional: make scrollbar look clean */
+.main-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background-color: rgba(43, 122, 120, 0.4);
+    border-radius: 8px;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(43, 122, 120, 0.6);
+}
+
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.main-header h1 {
+    color: #2b7a78;
+    font-size: 1.8rem;
+}
+
+.main-header p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Tables (common table styles) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+thead {
+    background: #2b7a78;
+    color: white;
+}
+
+/* Status badges */
+.status {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 15px;
+    }
+
+    .sidebar h2 {
+        display: none;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+}

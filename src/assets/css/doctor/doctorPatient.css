@@ -1,0 +1,60 @@
+.patients {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.patients h2 { color: #2b7a78; margin-bottom: 20px; font-size: 1.4rem; }
+
+
+/* Scrollable table container */
+.table-container {
+    max-height: 600px; /* You can adjust this */
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Fix header when scrolling */
+.table-container thead th {
+    position: sticky;
+    top: 0;
+    background: #2b7a78;
+    z-index: 2;
+}
+
+/* Smooth scroll */
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+.table-container::-webkit-scrollbar-thumb {
+    background-color: rgba(43, 122, 120, 0.6);
+    border-radius: 10px;
+}
+.table-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(43, 122, 120, 0.9);
+}
+
+/* Search bar styling */
+.search-bar {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.search-bar input {
+    padding: 10px 15px;
+    width: 250px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+    outline: none;
+    transition: 0.2s;
+}
+
+.search-bar input:focus {
+    border-color: #2b7a78;
+    box-shadow: 0 0 4px rgba(43, 122, 120, 0.5);
+}

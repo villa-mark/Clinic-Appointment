@@ -3,7 +3,8 @@
 class Route {
     public function __construct() {
         $urlArr = $this->sliceURL();
-        $route = isset($urlArr[1]) ? strtolower($urlArr[1]) : ''; // use [1] since [0] is usually "src" if inside subfolder
+        $route = isset($urlArr[1]) ? strtolower($urlArr[1]) : ''; // main route
+        $subRoute = isset($urlArr[2]) ? strtolower($urlArr[2]) : ''; // nested route if exists
 
         switch ($route) {
             case '':
@@ -21,7 +22,7 @@ class Route {
             case 'register-clinic':
                 require __DIR__ . '/../View/Register/registerClinic.php';
                 break;
-            
+
             case 'choose':
                 require __DIR__ . '/../View/Register/chooseRegister.php';
                 break;
@@ -35,14 +36,48 @@ class Route {
                 break;
 
             case 'doctor':
-                require __DIR__ . '/../View/Doctor/doctorDashboard.php';
+                // Handle doctor subroutes
+                $this->handleDoctorRoutes($subRoute);
                 break;
 
             default:
-                http_response_code(404);
-                echo "<h1>404 Page Not Found</h1>";
+                $this->pageNotFound();
                 break;
         }
+    }
+
+    private function handleDoctorRoutes($subRoute) {
+        switch ($subRoute) {
+            case '':
+                require __DIR__ . '/../View/Doctor/doctorDashboard.php';
+                break;
+
+            case 'appointment':
+                require __DIR__ . '/../View/Doctor/doctorAppointment.php';
+                break;
+
+            case 'patient':
+                require __DIR__ . '/../View/Doctor/doctorPatient.php';
+                break;
+
+            case 'message':
+                require __DIR__ . '/../View/Doctor/doctorMessage.php';
+                break;
+
+            case 'setting':
+                require __DIR__ . '/../View/Doctor/doctorSetting.php';
+                break;
+                
+            default:
+                $this->pageNotFound();
+                break;
+        }
+    }
+
+    private function pageNotFound() {
+        http_response_code(404);
+        echo "<h1>404 Page Not Found</h1>";
+        exit();
     }
 
     private function sliceURL() {

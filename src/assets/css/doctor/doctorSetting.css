@@ -1,0 +1,30 @@
+.settings {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.settings h2 { color: #2b7a78; margin-bottom: 20px; font-size: 1.4rem; }
+
+.settings form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.settings label { font-weight: 500; color: #333; }
+.settings input { padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
+
+.settings button {
+    background: #2b7a78;
+    color: white;
+    padding: 12px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.settings button:hover { background: #3aafa9; }

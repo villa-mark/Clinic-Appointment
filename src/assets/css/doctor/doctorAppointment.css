@@ -1,0 +1,169 @@
+/*****************************************
+ * Author: Mark Anthony Villahermosa
+ * File: doctorAppointment.css
+ * Description: Styles for the doctor's appointment page
+ ******************************************/
+
+/* --- Appointments Section --- */
+.appointments {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.appointments h2 {
+    color: #2b7a78;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+/* --- Status Styles --- */
+.status.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+.status.completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+.status.cancelled {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* --- Filter Section --- */
+.filter {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.filter input[type="date"],
+.filter select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: #fff;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.filter input[type="date"]:focus,
+.filter select:focus {
+    border-color: #2b7a78;
+    box-shadow: 0 0 0 2px rgba(43, 122, 120, 0.2);
+    outline: none;
+}
+
+.filter button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2b7a78;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.filter button:hover {
+    background-color: #3aafa9;
+}
+/* --- Table Container (Scrollable) --- */
+.table-container {
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    position: relative; /* ensures sticky positioning works properly */
+}
+
+/* Sticky Table Headers */
+.table-container thead th {
+    position: sticky;
+    top: 0;
+    background-color: #2b7a78;
+    color: white;
+    font-weight: 600;
+    z-index: 5; /* keep above table rows */
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Table Styling */
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* helps keep sticky alignment consistent */
+}
+
+.table-container th,
+.table-container td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+}
+
+.table-container tr:hover {
+    background-color: #f9f9f9;
+}
+
+
+/* --- Action Buttons --- */
+.btn-accept,
+.btn-decline {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-accept {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-accept:hover {
+    background-color: #218838;
+}
+
+.btn-decline {
+    background-color: #dc3545;
+    color: #fff;
+    margin-left: 5px;
+}
+
+.btn-decline:hover {
+    background-color: #c82333;
+}
+
+.no-action {
+    color: #999;
+    font-style: italic;
+}
+
+.btn-accept {
+    background-color: #4CAF50; color: white; border: none;
+    padding: 6px 10px; border-radius: 6px; cursor: pointer; margin-right: 5px;
+}
+.btn-decline {
+    background-color: #f44336; color: white; border: none;
+    padding: 6px 10px; border-radius: 6px; cursor: pointer; margin-right: 5px;
+}
+.btn-complete {
+    background-color: #2196F3; color: white; border: none;
+    padding: 6px 10px; border-radius: 6px; cursor: pointer;
+}
+.btn-accept:hover { background-color: #45a049; }
+.btn-decline:hover { background-color: #da190b; }
+.btn-complete:hover { background-color: #0b7dda; }
+.status.completed { color: #2196F3; font-weight: bold; }
+.status.pending { color: #FFA500; font-weight: bold; }
+.status.cancelled { color: #f44336; font-weight: bold; }
+.status.accepted { color: #4CAF50; font-weight: bold; }

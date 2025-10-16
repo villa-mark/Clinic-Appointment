@@ -1,0 +1,92 @@
+/*****************************************
+ * Author: Mark Anthony Villahermosa
+ * File: doctorTable.css
+ * Description: Fixed version (sticky thead works perfectly)
+ ******************************************/
+
+ .table-section {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+/* ✅ The scrollable container */
+.table-container {
+    max-height: 600px;
+    overflow-y: auto;
+    margin-top: 10px;
+    border-radius: 8px;
+    display: block;
+    position: relative;
+}
+
+/* ✅ Custom scrollbar */
+.table-container::-webkit-scrollbar {
+    width: 6px;
+}
+.table-container::-webkit-scrollbar-thumb {
+    background-color: rgba(43, 122, 120, 0.3);
+    border-radius: 10px;
+}
+.table-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(43, 122, 120, 0.5);
+}
+
+/* ✅ Make sure table layout doesn’t break */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+/* ✅ Sticky Header */
+thead {
+    position: sticky;
+    inset-block-start: 0; /* same as top: 0, but more consistent */
+    z-index: 5;
+}
+
+thead tr {
+    background-color: #2b7a78 !important;
+}
+
+thead th {
+    color: white;
+    text-align: left;
+    padding: 12px;
+    font-weight: 600;
+    background-color: #2b7a78;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ✅ Body rows */
+tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+}
+
+tbody tr:hover {
+    background: #f7f7f7;
+}
+
+/* ✅ Status label styles */
+.status {
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.status.pending { background: #fff4cc; color: #a67c00; }
+.status.completed { background: #d4edda; color: #155724; }
+.status.cancelled { background: #f8d7da; color: #721c24; }
+
+/* ✅ Prevent inherited CSS from overriding sticky header */
+.appointments thead th,
+.table-section thead th {
+    position: sticky;
+    top: 0;
+}
