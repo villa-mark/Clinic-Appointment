@@ -34,8 +34,7 @@
             <h2>Book Appointments Anytime, Anywhere</h2>
             <p>Clinic Appointment is a web-based system that connects patients, doctors, and clinic admins for easy online booking and appointment management.</p>
             <div class="hero-buttons">
-                <a href="/index.php/choose" class="btn">Create Account</a>
-                <a href="/index.php/login" class="btn-outline">Login</a>
+                <a href="/index.php/choose" class="btn">Book Appointment</a>
             </div>
         </div>
     </section>
