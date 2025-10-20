@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Register Clinic</title>
-  <link rel="stylesheet" href="/assets/css/registerClinic.css" />
+  <link rel="stylesheet" href="/assets/css/register/registerClinic.css" />
 </head>
 <body class="register-body">
   <div class="register-wrapper">

@@ -1,0 +1,113 @@
+/* ---------------------------------
+           SEARCH DISEASE PAGE STYLES
+        ---------------------------------- */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            outline: none;
+            font-size: 1rem;
+            transition: 0.2s ease;
+        }
+
+        .search-bar input:focus {
+            border-color: #2b7a78;
+            box-shadow: 0 0 0 3px rgba(43, 122, 120, 0.2);
+        }
+
+        .search-bar button {
+            background-color: #2b7a78;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #3aafa9;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: #2b7a78;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 2px solid #def2f1;
+            padding-bottom: 10px;
+        }
+
+        .doctor-card {
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+        }
+
+        .doctor-card h3 {
+            color: #2b7a78;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .doctor-card p {
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        .btn-request {
+            display: inline-block;
+            margin-top: 10px;
+            background: #3aafa9;
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-request:hover {
+            background: #2b7a78;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .search-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-bar input, .search-bar button {
+                width: 100%;
+            }
+
+            .doctor-card {
+                padding: 20px;
+            }
+        }

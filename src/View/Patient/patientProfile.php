@@ -19,48 +19,7 @@ $patient = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile | Clinic Appointment</title>
     <link rel="stylesheet" href="/assets/css/common/baseLayout.css" />
-    <style>
-        .profile-card {
-            background: #fff;
-            padding: 25px 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            max-width: 600px;
-            margin: 30px auto;
-        }
-        .profile-card h2 {
-            color: #2b7a78;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            text-align: center;
-        }
-        .profile-info {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            row-gap: 12px;
-            column-gap: 10px;
-            font-size: 1rem;
-        }
-        .profile-info span {
-            font-weight: 600;
-            color: #17252a;
-        }
-        .btn-edit {
-            margin-top: 20px;
-            display: block;
-            width: 100%;
-            background: #2b7a78;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: 0.3s ease;
-        }
-        .btn-edit:hover {
-            background: #205f5d;
-        }
-    </style>
+    <link rel="stylesheet" href="/assets/css/patient/patientProfile.css">
 </head>
 <body>
 <div class="dashboard">

@@ -1,0 +1,89 @@
+/* -----------------------------
+           PAGE-SPECIFIC STYLES
+        ----------------------------- */
+        .filters {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .filters label {
+            font-weight: 500;
+            color: #2b7a78;
+        }
+
+        .filters input[type="date"],
+        .filters select {
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s ease;
+        }
+
+        .filters input[type="date"]:focus,
+        .filters select:focus {
+            border-color: #2b7a78;
+            box-shadow: 0 0 0 3px rgba(43, 122, 120, 0.2);
+        }
+
+        .appointments-table {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .appointments-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .appointments-table th {
+            background: #2b7a78;
+            color: #fff;
+            font-weight: 600;
+            padding: 14px;
+            text-align: left;
+        }
+
+        .appointments-table td {
+            padding: 14px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .appointments-table tr:hover {
+            background: #f8fdfd;
+        }
+
+        .status {
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .status.pending { background: #fff4cc; color: #a67c00; }
+        .status.accepted { background: #d4edda; color: #155724; }
+        .status.declined { background: #f8d7da; color: #721c24; }
+        .status.completed { background: #d1ecf1; color: #0c5460; }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            .filters {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .filters input,
+            .filters select {
+                width: 100%;
+            }
+        }
