@@ -1,96 +1,68 @@
 <?php
-// Manage Doctors Page
-// Author: Mark Anthony Villahermosa
-session_start();
+    // Manage Doctors Page
+    // Author: Mark Anthony Villahermosa
 
-// Example: Simulated clinic admin name
-$clinicName = "ClinicA";
+    require __DIR__ . '/../../Controller/admin/adminManageDoctorController.php';
 
-// Sample doctors list (replace with DB data later)
-$doctors = [
-    ["name" => "Dr. Maria Santos", "specialization" => "Cardiology", "schedule" => "Mon - Wed, 9AM - 4PM", "status" => "Active"],
-    ["name" => "Dr. Jason Dela Cruz", "specialization" => "Dermatology", "schedule" => "Tue - Fri, 10AM - 5PM", "status" => "Inactive"],
-    ["name" => "Dr. Angela Reyes", "specialization" => "Pediatrics", "schedule" => "Mon - Sat, 8AM - 3PM", "status" => "Active"],
-];
+    $pageTitle = 'Manage Doctors';
+    $pageDescription = "View and manage the list of doctors in your clinic.";
+    $pageStyles = ['/assets/css/admin/adminManageDoctor.css'];
+    $sidebar = "/../sidebar/adminSidebar.php";
+
+    // Start output buffering — this captures the page’s content
+    ob_start();
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Doctors | Clinic Appointment</title>
-    <link rel="stylesheet" href="/assets/css/common/baseLayout.css" />
-    <link rel="stylesheet" href="/assets/css/admin/adminManageDoctor.css">
-</head>
-<body>
-<div class="dashboard">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div>
-            <h2><?= htmlspecialchars($clinicName) ?></h2>
-            <nav>
-                <ul>
-                    <li><a href="/index.php/admin/">🏠 Dashboard</a></li>
-                    <li><a href="#" class="active">👨‍⚕️ Manage Doctors</a></li>
-                    <li><a href="/index.php/admin/patient">🧑‍🤝‍🧑 View Patients</a></li>
-                    <li><a href="/index.php/admin/appointment">📅 Appointments</a></li>
-                    <li><a href="/index.php/admin/setting">⚙️ Settings</a></li>
-                </ul>
-            </nav>
-        </div>
-        <a href="/index.php/" class="logout-btn">Logout</a>
-    </aside>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="main-header">
-            <div>
-                <h1>Manage Doctors</h1>
-                <p>View and manage the list of doctors in your clinic.</p>
-            </div>
-            <a href="/index.php/admin/add_doctor" class="btn-add">+ Add Doctor</a>
-        </div>
+<!-- ----------------------------------------------------------------------------------------------------------  -->
+<!-- START MAIN CONTENT  -->
+<!-- ----------------------------------------------------------------------------------------------------------  -->
 
-        <!-- Doctor Table -->
-        <section class="table-section">
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Specialization</th>
-                            <th>Schedule</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($doctors as $doc): ?>
-                            <tr>
-                                <td><?= htmlspecialchars($doc['name']); ?></td>
-                                <td><?= htmlspecialchars($doc['specialization']); ?></td>
-                                <td><?= htmlspecialchars($doc['schedule']); ?></td>
-                                <td>
-                                    <span class="status <?= strtolower($doc['status']); ?>">
-                                        <?= htmlspecialchars($doc['status']); ?>
-                                    </span>
-                                </td>
-                                <td>
-                                    <?php if ($doc['status'] === "Active"): ?>
-                                        <a href="#" class="action-btn">Deactivate</a>
-                                    <?php else: ?>
-                                        <a href="#" class="action-btn">Activate</a>
-                                    <?php endif; ?>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+<!-- Doctor Table -->
+<section class="table-section">
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Specialization</th>
+                    <th>Schedule</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($doctors as $doc): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($doc['name']); ?></td>
+                        <td><?= htmlspecialchars($doc['specialization']); ?></td>
+                        <td><?= htmlspecialchars($doc['schedule']); ?></td>
+                        <td>
+                            <span class="status <?= strtolower($doc['status']); ?>">
+                                <?= htmlspecialchars($doc['status']); ?>
+                            </span>
+                        </td>
+                        <td>
+                            <?php if ($doc['status'] === "Active"): ?>
+                                <a href="#" class="action-btn">Deactivate</a>
+                            <?php else: ?>
+                                <a href="#" class="action-btn">Activate</a>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</section>
 
-        <footer>© 2025 Clinic Appointment System — Designed by Mark Anthony Villahermosa</footer>
-    </main>
-</div>
-</body>
-</html>
+<!-- ----------------------------------------------------------------------------------------------------------  -->
+<!-- END MAIN CONTENT  -->
+<!-- ----------------------------------------------------------------------------------------------------------  -->
+
+<?php
+    // Capture the buffered content
+    $content = ob_get_clean();
+
+    // Now load the layout and pass the content
+    require_once __DIR__ . '/../Component/layout/baseLayout.php';
+?>

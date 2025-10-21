@@ -1,83 +1,63 @@
 <?php
 // Patient Dashboard
 // Author: Mark Anthony Villahermosa
-session_start();
+    require_once __DIR__ . '/../../Controller/patient/patientDashboardController.php';
 
-// Simulated logged-in patient
-$patientName = "John Doe";
+    $pageTitle = "Welcome, " . htmlspecialchars($patientName) . "!";
+    $pageDescription = "Here’s a summary of your appointments and activity.";
+    $pageStyles = ['/assets/css/patient/patientDashboard.css'];
+    $sidebar = "/../sidebar/patientSidebar.php";
+
+    // Start output buffering — this captures the page’s content
+    ob_start();
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Dashboard | Clinic Appointment</title>
-    <link rel="stylesheet" href="/assets/css/common/baseLayout.css" />
-    <link rel="stylesheet" href="/assets/css/patient/patientDashboard.css">
-</head>
-<body>
-<div class="dashboard">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div>
-            <h2>ClinicA</h2>
-            <nav>
-                <ul>
-                <li><a href="#" class="active">🏠 Dashboard</a></li>
-                    <li><a href="/index.php/patient/search" >🧬 Search Disease</a></li>
-                    <li><a href="/index.php/patient/appointment">📅 My Appointments</a></li>
-                    <li><a href="/index.php/patient/profile">👤 Profile</a></li>
-                </ul>
-            </nav>
-        </div>
-        <a href="/index.php/" class="logout-btn">Logout</a>
-    </aside>
 
-    <!-- Main -->
-    <main class="main-content">
-        <div class="main-header">
-            <div>
-                <h1>Welcome, <?= htmlspecialchars($patientName); ?>!</h1>
-                <p>Here’s a summary of your appointments and activity.</p>
-            </div>
-        </div>
+<!-- ----------------------------------------------------------------------------------------------------------  -->
+<!-- START MAIN CONTENT  -->
+<!-- ----------------------------------------------------------------------------------------------------------  -->
 
-        <section class="appointments">
-            <h2>My Appointments</h2>
-            <table class="appointment-list">
-                <thead>
+<section class="appointments">
+    <h2>My Appointments</h2>
+    <table class="appointment-list">
+        <thead>
+            <tr>
+                <th>Doctor</th>
+                <th>Specialization</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (empty($appointments)): ?>
+                <tr>
+                    <td colspan="4" style="text-align:center;">No appointments found.</td>
+                </tr>
+            <?php else: ?>
+                <?php foreach ($appointments as $appt): ?>
                     <tr>
-                        <th>Doctor</th>
-                        <th>Specialization</th>
-                        <th>Date</th>
-                        <th>Status</th>
+                        <td><?= htmlspecialchars($appt["doctor"]) ?></td>
+                        <td><?= htmlspecialchars($appt["specialization"]) ?></td>
+                        <td><?= htmlspecialchars($appt["date"]) ?></td>
+                        <td>
+                            <span class="status <?= strtolower($appt["status"]) ?>">
+                                <?= htmlspecialchars($appt["status"]) ?>
+                            </span>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Dr. Maria Santos</td>
-                        <td>Cardiology</td>
-                        <td>Oct 18, 2025 - 10:00 AM</td>
-                        <td><span class="status pending">Pending</span></td>
-                    </tr>
-                    <tr>
-                        <td>Dr. Jason Dela Cruz</td>
-                        <td>Dermatology</td>
-                        <td>Oct 20, 2025 - 2:00 PM</td>
-                        <td><span class="status accepted">Accepted</span></td>
-                    </tr>
-                    <tr>
-                        <td>Dr. Angela Reyes</td>
-                        <td>Pediatrics</td>
-                        <td>Oct 25, 2025 - 9:30 AM</td>
-                        <td><span class="status declined">Declined</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</section>
 
-        <footer>© 2025 Clinic Appointment System — Designed by Mark Anthony Villahermosa</footer>
-    </main>
-</div>
-</body>
-</html>
+<!-- ----------------------------------------------------------------------------------------------------------  -->
+<!-- END MAIN CONTENT  -->
+<!-- ----------------------------------------------------------------------------------------------------------  -->
+
+<?php
+// Capture the buffered content
+$content = ob_get_clean();
+
+// Now load the layout and pass the content
+require_once __DIR__ . '/../Component/layout/baseLayout.php';
+?>
