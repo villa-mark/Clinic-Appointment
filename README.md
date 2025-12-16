@@ -103,15 +103,6 @@ _As a patient, I want to view my appointment list and their statuses (Pending, A
 
 ---
 
-## 🗂️ Suggested Database Tables  
-- **Clinic** – stores clinic details and admin credentials  
-- **Doctor** – stores doctor profiles and schedules  
-- **Patient** – stores patient login info  
-- **Appointment** – stores appointment requests and statuses  
-- **Disease** *(optional)* – links diseases to specializations  
-
----
-
 ## 🧠 Tech Stack  
 - **Frontend:** HTML, CSS
 - **Backend:** PHP (OOP)  
