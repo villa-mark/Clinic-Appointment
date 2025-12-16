@@ -17,7 +17,6 @@
     <div class="register-wrapper">
         <div class="register-card">
 
-            <!-- Back Button inside Card -->
             <a href="/index.php/choose" class="back-btn">Back</a>
 
             <div class="register-header">
@@ -25,7 +24,15 @@
                 <p>Join ClinicA and start booking appointments online</p>
             </div>
 
-            <form action="register_process.php" method="POST" class="register-form">
+            <!-- ✅ Feedback Message -->
+            <?php if (isset($_GET['status'])): ?>
+                <div class="alert <?= $_GET['status'] === 'success' ? 'alert-success' : 'alert-error'; ?>">
+                    <?= htmlspecialchars($_GET['message']); ?>
+                </div>
+            <?php endif; ?>
+
+
+            <form action="/Controller/register/registerPatient.php" method="POST" class="register-form">
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="fullname">Full Name</label>
@@ -46,7 +53,6 @@
                         <label for="password">Password</label>
                         <input type="password" id="password" name="password" placeholder="Create a password" required>
                     </div>
-
                 </div>
 
                 <button type="submit" class="btn full">Register</button>

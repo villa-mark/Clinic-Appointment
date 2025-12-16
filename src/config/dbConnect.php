@@ -20,14 +20,4 @@ $conn->set_charset("utf8");
 
 // For debugging, uncomment this:
 // echo "Database connected successfully.";
-
-$result = $conn->query("SELECT * FROM patients");
-
-if ($result && $result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo "Patient: " . htmlspecialchars($row['full_name']) . "<br>";
-    }
-} else {
-    echo "No patients found.";
-}
 ?>

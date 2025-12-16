@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label for="role">Login as</label>
                 <select id="role" name="role" required>
-                    <option value="">Select Role</option>
+                    <option value="" disabled selected>Select Role</option>
                     <option value="admin">Clinic Admin</option>
                     <option value="doctor">Doctor</option>
                     <option value="patient">Patient</option>

@@ -15,7 +15,7 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <h1 class="logo">ClinicA</h1>
+            <h1 class="logo" onclick = "location.reload();">ClinicA</h1>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
@@ -86,8 +86,6 @@
 
 
     <!-- Footer -->
-    <footer>
-        <p>© <?php echo date('Y'); ?> Clinic Appointment System | Developed by Mark Anthony Villahermosa</p>
-    </footer>
+    <? require __DIR__ . "/Component/footer.php"; ?>
 </body>
 </html>
